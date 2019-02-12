@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="263.0" prefWidth="387.0" xmlns="http://javafx.com/javafxml" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.InterfaceLoginController">
+   <children>
+      <Label layoutX="51.0" layoutY="75.0" text="Name User:" />
+      <Label layoutX="51.0" layoutY="120.0" text="Password:" />
+      <Label alignment="CENTER" layoutX="154.0" layoutY="27.0" prefHeight="20.0" prefWidth="100.0" text="Welcome" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label id="lblMesaje" fx:id="messageLabel" alignment="CENTER" layoutX="52.0" layoutY="157.0" prefHeight="25.0" prefWidth="281.0" textFill="#f20000" />
+      <TextField id="txtUusario" fx:id="idUserTextField" layoutX="138.0" layoutY="71.0" prefHeight="25.0" prefWidth="198.0" promptText="User" />
+      <PasswordField id="txtcontrasena" fx:id="passwordUserPasswordField" layoutX="140.0" layoutY="119.0" prefHeight="25.0" prefWidth="198.0" promptText="Password" />
+      <Button id="btnIngresar" layoutX="169.0" layoutY="202.0" mnemonicParsing="false" onAction="#ButtonLogin" text="Login" />
+   </children>
+</AnchorPane>

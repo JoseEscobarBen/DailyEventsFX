@@ -1,0 +1,114 @@
+
+DROP TABLE users;
+DROP TABLE incidents;
+DROP TABLE products;
+
+CREATE TABLE users(
+    id_user INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    turn_user varchar(3) NOT NULL,
+    surnames_user varchar(45) NOT NULL,
+    name_user varchar(45) NOT NULL,
+    dni_user varchar(8) NOT NULL,
+    phone_user varchar(30) NOT NULL,
+    address_user varchar(45) NOT NULL,
+    login_user varchar(45) NOT NULL,
+    password_user varchar(20) NOT NULL,
+    type_user varchar(20) NOT NULL,
+    status_user varchar(10) NOT NULL,
+    PRIMARY KEY (id_user)
+);
+
+CREATE TABLE products(
+    id_product INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    name_product varchar(20) NOT NULL,
+    PRIMARY KEY (id_product)
+);
+
+CREATE TABLE incidents(
+    id_incident INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    id_user INT NOT NULL,
+    id_product INT,    
+    date_incident DATETIME NOT NULL,
+    type_incident varchar(10) NOT NULL,
+    commentary_incident varchar(65), 
+    cost_incident REAL,
+    PRIMARY KEY (id_incident),
+    FOREIGN KEY (id_user) REFERENCES users(id_user),
+    FOREIGN KEY (id_product) REFERENCES products(id_product)
+);
+
+
+INSERT INTO users (turn_user,surnames_user,name_user,dni_user,phone_user,address_user,login_user,password_user,type_user,status_user)
+VALUES
+    ('1','Angel Ro','Daniela','111111','888888','Av. Inexistente 777','Usuario1','Usuario','user','inactive'),
+    ('2','La Rosa','Borges','222222','999999','Av. Existente 888','Usuario2','Usuario','user','inactive'),
+    ('3','Escobar','Alejandro','333333','999999','Av. Tomas Valle 999','Admin','xxx','admin','inactive'),
+    ('1','Angeles Rojas','Daniel Jesus','71238922','5672871','Av. Inexistente 444','Usuario1','Usuario1','user','active'),
+    ('2','La Rosa Menacho','Jose Carlos','78829323','528376','Av. Existente 555','Usuario2','Usuario2','user','active'),
+    ('3','Escobar Bendezu','Jose Alvaro','78645219','6457854','Av. Tomas Valle 666','Admin','Admin','admin','active');
+
+INSERT INTO products(name_product)
+VALUES
+    ('Papa'),
+    ('Tomate'),
+    ('Zanahoria'),
+    ('Cebolla'),
+    ('Pollo'),
+    ('Fideos'),
+    ('Ternera'),
+    ('Culantro'),
+    ('Arroz'),
+    ('Camote'),
+    ('Perejil'),
+    ('Apio'),
+    ('Limon'),
+    ('Pescado'),
+    ('Filete'),
+    ('Chorizo'),
+    ('AjiPanca'),
+    ('AjiMirasol'),
+    ('Transporte'),
+    ('Tocino'),
+    ('Langostino'),
+    ('CebollaChina');
+    
+INSERT INTO incidents(id_user,id_product,date_incident,type_incident,cost_incident)
+VALUES
+    (1,1,'2017-07-01','event',30),
+    (1,1,'2017-07-01','event',10),
+    (1,1,'2017-07-02','event',50),
+    (2,2,'2017-07-02','event',60),
+    (2,2,'2017-07-02','event',15),
+    (2,2,'2017-07-02','event',55),
+    (5,2,'2017-07-02','event',100),
+    (4,2,'2017-03-02','event',15),
+    (4,2,'2017-07-03','event',156),
+    (4,2,'2017-07-04','event',55),
+    (4,2,'2017-07-04','event',11),
+    (5,2,'2017-07-04','event',27),
+    (6,4,'2017-07-19','event',18),
+    (6,4,'2017-07-19','event',22),
+    (5,4,'2017-07-19','event',155),
+    (6,4,'2017-07-19','event',123),
+    (4,4,'2018-12-19','event',10),
+    (5,2,'2018-12-04','event',27),
+    (6,4,'2018-12-30','event',18),	
+    (6,4,'2018-12-30','event',22),
+    (5,4,'2018-12-30','event',155),
+    (6,4,'2018-12-30','event',123),
+    (4,4,'2018-12-30','event',10);
+
+INSERT INTO incidents(id_user,date_incident,type_incident,commentary_incident)
+VALUES
+    (1,'2017-07-06','comment','se rompio un vaso'),
+    (1,'2017-07-07','comment','se rompio un plato'),
+    (1,'2017-07-12','comment','se rompio un silla'),
+    (2,'2017-07-14','comment','se rompio un mesa'),
+    (2,'2017-07-15','comment','se rompio un plato'),
+    (2,'2017-07-16','comment','se rompio un vaso'),
+    (4,'2018-12-19','comment','se rompio un mesa'),
+    (4,'2018-12-30','comment','se rompio un plato'),
+    (4,'2018-12-30','comment','se rompio un vaso'),
+    (4,'2018-12-30','comment','se rompio un mesa'),
+    (4,'2018-12-30','comment','se rompio una jarra');
+
